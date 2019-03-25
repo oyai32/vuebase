@@ -1,0 +1,57 @@
+/* Element Chalk Variables */
+
+// Special comment for theme configurator
+// type|[Chinese Name, English Name, Spanish Name, French Name]|Category|Order
+
+// ------------------bootstrap为主题名------------------
+.bootstrap {
+
+  /* Color
+  -------------------------- */
+  /// color|[主题色,primary color,color primario]|BrandColor|0
+  $--color-primary: #407BB9 !default;
+  /// color|[基础白色,basic white,basic white]|BackgroundColor|4
+  $--color-white: #FFFFFF !default;
+  /// color|[基础黑色,basic black,basicustom-theme/c black]|BackgroundColor|4
+  $--color-black: #000000 !default;
+  $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
+  $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
+  $--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default; /* 79bbff */
+  $--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default; /* 8cc5ff */
+  $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default; /* a0cfff */
+  $--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default; /* b3d8ff */
+  $--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /* c6e2ff */
+  $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* d9ecff */
+  $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */
+  /// color|[成功颜色,success color,success color]|SecondaryColor|1
+  $--color-success: #68B857 !default;
+  /// color|[警告颜色,warning color,warning color]|SecondaryColor|1
+  $--color-warning: #EAAC45 !default;
+  /// color|[危险颜色,danger color,danger color]|SecondaryColor|1
+  $--color-danger: #D1524C !default;
+  /// color|[信息颜色,info color,info color]|SecondaryColor|1
+  $--color-info: #6BC0E0 !default;
+
+  $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
+  $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
+  $--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
+  $--color-info-light: mix($--color-white, $--color-info, 80%) !default;
+
+  $--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
+  $--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
+  $--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
+  $--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
+
+  // 由于样式优先级，加了.bootstrap后element自带的有些样式会被强行覆盖导致没有效果，找到这些属性，写在此处
+  .el-button + .el-button {
+    margin-left: 10px;
+  }
+
+  /* 改变 icon 字体路径变量，必需 */
+  $--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+  @import "../../../../node_modules/element-ui/packages/theme-chalk/src/index";
+
+  /* 自己的样式在此引用，必需 */
+  @import '../../styles/main';
+}

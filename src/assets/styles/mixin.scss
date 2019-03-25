@@ -1,0 +1,12 @@
+@mixin hover{
+  cursor: pointer;
+  opacity: 0.75;
+}
+@mixin flexCenter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin bgImg80($src){
+  background: url($src) center center /80% no-repeat;
+}

@@ -1,0 +1,25 @@
+// 深色主题的特殊样式
+body {
+  background: url("./images/bodyBg.png") no-repeat center center/cover;
+  color:$--color-text-regular;
+}
+
+.content-box {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+
+.header {
+  border-bottom: 1px solid #0f3753;
+  background: url("./images/topBg.png") no-repeat center center/cover !important;
+  //box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.5);
+}
+
+.el-menu {
+  background: url("./images/navlist-bg.png");
+  border: none;
+}
+
+.sidebar {
+  box-shadow: 1px 2px 10px 1px rgba(0, 0, 0, 0.5);
+}
