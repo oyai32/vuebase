@@ -3,7 +3,7 @@
     <!--background-color="#152739"-->
     <!--text-color="#bfcbd9" active-text-color="#2776C9"-->
     <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse"
-              unique-opened router
+             unique-opened router
              @select="selectFn">
       <template v-for="item in items">
         <template v-if="item.subs">
@@ -136,6 +136,7 @@
     top: 70px;
     bottom: 0;
     overflow-y: scroll;
+    z-index: 1;
   }
 
   .sidebar::-webkit-scrollbar {
