@@ -33,15 +33,17 @@ body {
   }
 
   .rightPanel {
-    border-right:4px solid $--color-primary;
+    border-right: 4px solid $--color-primary;
     background: $--color-info;
-    color:$--color-white;
+    color: $--color-white;
+
     .handle-button {
       background: $--color-primary;
-      color:$--color-white;
+      color: $--color-white;
     }
-    .el-radio{
-      color:$--color-text-placeholder
+
+    .el-radio {
+      color: $--color-text-placeholder
     }
   }
 
@@ -77,8 +79,24 @@ body {
     border: none;
   }
 
+  .el-menu-item {
+    color: $--color-text-placeholder;
+  }
+
+  .el-menu-item i {
+    color: inherit;
+  }
+
+  .el-submenu__title {
+    color: $--color-text-placeholder;
+  }
+
+  .el-submenu__title i {
+    color: inherit;
+  }
+
   .el-submenu__title:hover {
-    background-color: #283446;
+    background-color: rgba(0, 0, 0, .2);
   }
 
   /*button*/
@@ -90,12 +108,14 @@ body {
   .el-card {
     height: 100%;
   }
+
   .el-card__header {
     height: 50px;
     line-height: 50px;
     padding: 0 15px;
     background: #fff;
   }
+
   /*Checkbox,radio*/
   .el-range-input, .el-checkbox__inner, .el-radio__inner {
     background-color: $--background-color-base;

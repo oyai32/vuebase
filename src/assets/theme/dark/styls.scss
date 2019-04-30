@@ -3,7 +3,7 @@
 body.dark {
   @import './element-variables';
 
-  background:#030233;
+  background: #030233;
   color: $--color-text-regular;
 
   .c-danger {
@@ -21,7 +21,7 @@ body.dark {
 
   .header {
     border-bottom: 2px solid #1B425C;
-    background: linear-gradient(45deg,#020031 0,#275A7C 100%);
+    background: linear-gradient(45deg, #020031 0, #275A7C 100%);
   }
 
 
@@ -44,13 +44,16 @@ body.dark {
     background: rgba(0, 0, 0, 0);
     border: none;
   }
+
   .rightPanel {
-    border-right:4px solid $--color-primary;
+    border-right: 4px solid $--color-primary;
     background: #091D34;
+
     .handle-button {
       background: $--color-primary;
     }
   }
+
   /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
   ::-webkit-scrollbar {
     width: 6px;
@@ -83,8 +86,12 @@ body.dark {
 
   /*Menu*/
   .el-menu {
-    background: linear-gradient(45deg,#17335C 0,#020031 100%);
+    background: linear-gradient(45deg, #17335C 0, #020031 100%);
     border: none;
+  }
+
+  .el-menu-item {
+    color: $--color-text-placeholder;
   }
 
   .el-menu-item i {
@@ -92,7 +99,7 @@ body.dark {
   }
 
   .el-submenu__title {
-    color: $--color-text-secondary;
+    color: $--color-text-placeholder;
   }
 
   .el-submenu__title i {
@@ -141,6 +148,7 @@ body.dark {
 
   .el-table th {
     padding: 5px 0;
+    background-color: $--background-color-base;
   }
 
   /* DatePicker*/
@@ -282,8 +290,9 @@ body.dark {
     color: $--color-text-regular;
     border-color: $--border-color-base;
   }
-  .el-input-group__prepend{
-    padding:0;
+
+  .el-input-group__prepend {
+    padding: 0;
   }
 
   /*select*/
