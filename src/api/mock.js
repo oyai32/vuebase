@@ -16,7 +16,7 @@ Mock.mock(GLOBAL.HOME + '/getUserInfo', /post|get/i, function (options) {
       state: 'success',
       'name': '-D调定义之崽崽',
       'id': '2',
-      theme: 'bootstrap'
+      theme: 'dark'
     }
   } else {
     return {

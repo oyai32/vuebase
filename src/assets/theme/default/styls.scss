@@ -1,0 +1,132 @@
+
+body {
+  @import './element-variables';
+
+  background: $--background-color-base;
+
+  .c-danger {
+    color: $--color-danger
+  }
+
+  .c-primary {
+    color: $--color-primary;
+  }
+
+
+  .header {
+    background: #324157;
+  }
+
+
+  .pLabel {
+    border-left: 3px solid $--color-primary;
+    color: $--color-primary;
+  }
+
+  .container {
+    height: calc(100% - 25px);
+  }
+
+  .crumbs {
+    background: #F5F7FA;
+    border-bottom: 1px solid $--border-color-base;
+  }
+
+  .rightPanel {
+    border-right:4px solid $--color-primary;
+    background: $--color-info;
+    color:$--color-white;
+    .handle-button {
+      background: $--color-primary;
+      color:$--color-white;
+    }
+    .el-radio{
+      color:$--color-text-placeholder
+    }
+  }
+
+
+  /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  }
+
+  /*定义滚动条轨道 内阴影+圆角*/
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  /*定义滑块 内阴影+圆角*/
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+    background-color: $--border-color-base;
+  }
+
+
+  /*修改框架本身的样式
+  ----------------------------------------------------------------------------------*/
+  /*Menu*/
+  .el-menu {
+    background: #324157;
+    border: none;
+  }
+
+  .el-submenu__title:hover {
+    background-color: #283446;
+  }
+
+  /*button*/
+  .el-button + .el-button {
+    margin-left: 10px;
+  }
+
+  /*card*/
+  .el-card {
+    height: 100%;
+  }
+  .el-card__header {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    background: #fff;
+  }
+  /*Checkbox,radio*/
+  .el-range-input, .el-checkbox__inner, .el-radio__inner {
+    background-color: $--background-color-base;
+    border-color: $--border-color-base;
+  }
+
+  .el-checkbox__input.is-checked .el-checkbox__inner, .el-radio__input.is-checked .el-radio__inner {
+    border-color: $--color-primary;
+    background-color: $--color-primary;
+  }
+
+  .el-checkbox__input.is-checked + .el-checkbox__label, .el-radio__input.is-checked + .el-radio__label {
+    color: $--color-primary;
+  }
+
+  .el-checkbox {
+    margin-right: 8px;
+  }
+
+  /* Table*/
+  .el-table th {
+    padding: 10px 0;
+    background: $--background-color-base;
+  }
+
+  /*pagination*/
+  .pagination {
+    text-align: right;
+
+    .el-pagination__total {
+      float: left;
+    }
+  }
+}

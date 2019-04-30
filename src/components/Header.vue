@@ -1,5 +1,5 @@
 <template>
-  <div class="header" :style="{'background':headerTheme.backgroundColor}">
+  <div class="header" >
     <!-- 折叠按钮 -->
     <div class="collapse-btn" @click="collapseChage">
       <i class="el-icon-menu"></i>
@@ -18,19 +18,14 @@
 <script>
   import {mapGetters} from 'vuex'
 
-  // 头部栏默认颜色
-  const headerTheme = {
-    backgroundColor: '#314156'
-  }
   export default {
     data() {
       return {
-        collapse: false,
-        headerTheme: {}
+        collapse: false
       }
     },
     created() {
-      this.setTheme();
+      // this.setTheme();
     },
     computed: {
       ...mapGetters([
@@ -38,10 +33,10 @@
       ])
     },
     watch: {
-      // 如果主题改变
-      theme() {
-        this.setTheme();
-      }
+      // // 如果主题改变
+      // theme() {
+      //   this.setTheme();
+      // }
     },
     methods: {
       // 侧边栏折叠
@@ -52,19 +47,6 @@
       logout() {
         this.$store.dispatch('Logout');
         this.$router.push('/login');
-      },
-      // 设置主题颜色
-      setTheme() {
-        let key = 'themeProperty';
-        let themeProperty = localStorage.getItem(key);
-        if (themeProperty) {
-          themeProperty = JSON.parse(themeProperty);
-          if (themeProperty.header) {
-            this.headerTheme = themeProperty.header;
-            return;
-          }
-        }
-        this.headerTheme = headerTheme;
       }
     },
     mounted() {

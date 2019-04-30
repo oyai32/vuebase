@@ -2,31 +2,31 @@
   <div class="sidebar">
     <!--background-color="#152739"-->
     <!--text-color="#bfcbd9" active-text-color="#2776C9"-->
-    <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse"
-             unique-opened router
+    <el-menu class="sidebar-el-menu" :default-active="activeIndex" :collapse="collapse"
+             unique-opened
              @select="selectFn">
       <template v-for="item in items">
         <template v-if="item.subs">
-          <el-submenu :index="item.index" :key="item.index">
+          <el-submenu :index="item.name" :key="item.name">
             <template slot="title">
-              <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+              <i :class="['iconfont','mr5',item.icon]"></i><span slot="title">{{ getTitle(item) }}</span>
             </template>
             <template v-for="subItem in item.subs">
-              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
-                <template slot="title">{{ subItem.title }}</template>
-                <el-menu-item v-for="(threeItem,i) in subItem.subs" :key="i" :index="threeItem.index">
-                  {{ threeItem.title }}
+              <el-submenu v-if="subItem.subs" :index="subItem.name" :key="subItem.name">
+                <template slot="title">{{ getTitle(subItem) }}</template>
+                <el-menu-item v-for="(threeItem,i) in subItem.subs" :key="i" :index="threeItem.name">
+                  {{ getTitle(threeItem)}}
                 </el-menu-item>
               </el-submenu>
-              <el-menu-item v-else :index="subItem.index" :key="subItem.index">
-                {{ subItem.title }}
+              <el-menu-item v-else :index="subItem.name" :key="subItem.name">
+                {{ getTitle(subItem)}}
               </el-menu-item>
             </template>
           </el-submenu>
         </template>
         <template v-else>
-          <el-menu-item :index="item.index" :key="item.index">
-            <i :class="item.icon"></i><span slot="title">{{ item.title }}</span>
+          <el-menu-item :index="item.name" :key="item.name">
+            <i :class="['iconfont','mr5',item.icon]"></i><span slot="title">{{ getTitle(item)}}</span>
           </el-menu-item>
         </template>
       </template>
@@ -37,92 +37,85 @@
 <script>
   import {mapGetters} from 'vuex'
 
-  // 默认颜色
-  const sidebarTheme = {
-    backgroundColor: '#314156',
-    textColor: '#bfcbd9',
-    activeTextColor: '#66B1FF'
-  }
   export default {
     data() {
       return {
         collapse: false,
-        sidebarTheme: {},
-        items: [
+        // key为路由的name，value为路由的路径和title
+        routeMap: {},
+        activeIndex: '',
+        items: [{
+          icon: 'el-icon-news',
+          name: 'dashboard',
+          title: '使用指南'
+        },
           {
-            icon: 'el-icon-news',
-            index: 'dashboard',
-            title: '使用指南'
+            icon: 'el-icon-date',
+            name: 'theme',
+            title: '主题切换'
           },
-          // {
-          //   icon: 'el-icon-date',
-          //   index: 'theme',
-          //   title: '主题切换'
-          // },
           {
             icon: 'el-icon-setting',
-            index: '3',
+            name: 'one',
             title: '一级菜单',
             subs: [
               {
-                index: 'form',
+                name: 'form',
                 title: '基本表单'
               },
               {
-                index: 'table',
+                name: 'table',
                 title: '基础表格'
               },
               {
-                index: '3-2',
+                name: 'two',
                 title: '二级菜单',
                 subs: [
                   {
-                    index: 'tree',
+                    name: 'tree',
                     title: '懒加载树'
+                  },
+                  {
+                    name: 'crumb',
+                    title: '二级面包屑'
                   }
                 ]
               }
             ]
-          }
-        ],
-        itemMap: {'dashboard': '使用指南', 'theme': '主题切换', 'form': '基本表单', 'tree': '懒加载树', 'table': '基础表格'}
+          }]
       }
     },
     created() {
-      this.setTheme();
+      this.activeIndex = this.$route.name
       // 通过 Event Bus 进行组件间通信，来折叠侧边栏
       this.$bus.$on('collapse', msg => {
         this.collapse = msg;
       })
+      let pageList = this.$router.options.routes.filter(cur => cur.name === 'menu');
+      let routeMap = {};
+      for (let item of pageList[0].children) {
+        if (item.name) {
+          routeMap[item.name] = {path: item.path, title: item.meta.title}
+        }
+      }
+      this.routeMap = routeMap;
     },
     computed: {
       ...mapGetters([
         'userId', 'theme'
-      ]),
-      onRoutes() {
-        return this.$route.path.replace('/', '');
-      }
+      ])
     },
-    watch: {
-      theme() {
-        this.setTheme()
-      }
-    },
+    watch: {},
     methods: {
-      selectFn(index) {
-        // bus.$emit('crumbText', this.itemMap[index]);
+      getTitle(item) {
+        console.log(JSON.stringify(item))
+        if (item.subs && item.subs.length > 0) return item.title
+        else return this.routeMap[item.name] && this.routeMap[item.name].title
       },
-      setTheme() {
-        let key = 'themeProperty'
-        let themeProperty = localStorage.getItem(key);
-        if (themeProperty) {
-          themeProperty = JSON.parse(themeProperty);
-          if (themeProperty.sidebar) {
-            this.sidebarTheme = themeProperty.sidebar;
-            return;
-          }
-        }
-        this.sidebarTheme = sidebarTheme
+      // 选中菜单的方法
+      selectFn(index, indexPath) {
+        this.$router.push({name: index})
+        this.activeIndex = index
       }
     }
   }

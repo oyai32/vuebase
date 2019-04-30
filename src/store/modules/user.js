@@ -26,7 +26,7 @@ const user = {
             if (res.theme) {
               this.dispatch('ChangeTheme', res.theme)
             } else {
-              setTheme(state.theme);
+              this.dispatch('ChangeTheme', defaultTheme)
             }
             // 将用户信息存到本地缓存
             sessionStorage.setItem('userData', JSON.stringify(res));

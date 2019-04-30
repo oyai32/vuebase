@@ -58,7 +58,6 @@
       }
     },
     created() {
-      this.$bus.$emit('crumbList', [{title: '懒加载树'}]);
       this.getTreeOnceData();
     },
     mounted() {

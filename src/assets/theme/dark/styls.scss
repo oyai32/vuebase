@@ -1,25 +1,302 @@
 // 深色主题的特殊样式
-body {
-  background: url("./images/bodyBg.png") no-repeat center center/cover;
-  color:$--color-text-regular;
-}
 
-.content-box {
-  background-color: rgba(0, 0, 0, 0);
-}
+body.dark {
+  @import './element-variables';
+
+  background:#030233;
+  color: $--color-text-regular;
+
+  .c-danger {
+    color: $--color-danger
+  }
+
+  .c-primary {
+    color: $--color-primary;
+  }
+
+  .content-box {
+    background-color: rgba(0, 0, 0, 0);
+  }
 
 
-.header {
-  border-bottom: 1px solid #0f3753;
-  background: url("./images/topBg.png") no-repeat center center/cover !important;
-  //box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.5);
-}
+  .header {
+    border-bottom: 2px solid #1B425C;
+    background: linear-gradient(45deg,#020031 0,#275A7C 100%);
+  }
 
-.el-menu {
-  background: url("./images/navlist-bg.png");
-  border: none;
-}
 
-.sidebar {
-  box-shadow: 1px 2px 10px 1px rgba(0, 0, 0, 0.5);
+  .sidebar {
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .pLabel {
+    border-left: 3px solid $--color-primary;
+    color: $--color-primary;
+  }
+
+
+  .container {
+    margin: 2px 20px;
+    height: calc(100% - 4px);
+  }
+
+  .crumbs {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+  }
+  .rightPanel {
+    border-right:4px solid $--color-primary;
+    background: #091D34;
+    .handle-button {
+      background: $--color-primary;
+    }
+  }
+  /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+  }
+
+  /*定义滚动条轨道 内阴影+圆角*/
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  /*定义滑块 内阴影+圆角*/
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+    background-color: #486489;
+  }
+
+
+  /*修改框架本身的样式
+  ----------------------------------------------------------------------------------*/
+
+  .el-form-item__label {
+    color: $--color-text-regular;
+  }
+
+  /*Menu*/
+  .el-menu {
+    background: linear-gradient(45deg,#17335C 0,#020031 100%);
+    border: none;
+  }
+
+  .el-menu-item i {
+    color: inherit;
+  }
+
+  .el-submenu__title {
+    color: $--color-text-secondary;
+  }
+
+  .el-submenu__title i {
+    color: inherit;
+  }
+
+  .el-submenu__title:hover {
+    background-color: rgba(0, 0, 0, .4);
+  }
+
+  /*card*/
+  .el-card {
+    background: rgba(1, 8, 27, 0.4);
+    border: none;
+    height: 100%;
+
+    &.is-always-shadow {
+      box-shadow: 0 0 2px 2px rgba(76, 119, 169, 0.7);
+    }
+  }
+
+  .el-card__header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    background-color: #1f354f;
+    border-bottom: 0;
+  }
+
+  /* Table*/
+  .el-table, .el-table tr {
+    background-color: $--background-color-base;
+  }
+
+  .el-table {
+    /*  border-width: 2px;
+      border-image: -webkit-linear-gradient(left, $--border-color-base 0%, #fff 50%, $--border-color-base 100%) 2 2;
+      box-shadow: 0 0 2px 2px rgba(76, 119, 169, 0.7);
+      background: rgba(1, 8, 27, 0.4);*/
+  }
+
+  .el-table td {
+    border: none;
+    padding: 5px 0;
+  }
+
+  .el-table th {
+    padding: 5px 0;
+  }
+
+  /* DatePicker*/
+  .el-picker-panel {
+    background-color: $--background-color-show;
+    border: 1px solid $--border-color-base;
+  }
+
+  .el-picker-panel__sidebar {
+    background-color: $--background-color-show;
+  }
+
+
+  /*Checkbox,radio*/
+  .el-range-input, .el-checkbox__inner, .el-radio__inner {
+    background-color: $--background-color-base;
+    border-color: $--border-color-base;
+  }
+
+  .el-checkbox__input.is-checked .el-checkbox__inner, .el-radio__input.is-checked .el-radio__inner {
+    border-color: $--color-primary;
+    background-color: $--color-primary;
+  }
+
+  .el-checkbox__input.is-checked + .el-checkbox__label, .el-radio__input.is-checked + .el-radio__label {
+    color: $--color-primary;
+  }
+
+  .el-checkbox {
+    margin-right: 8px;
+  }
+
+  /*pagination*/
+  .pagination {
+    text-align: right;
+
+    .el-pagination__total {
+      float: left;
+    }
+  }
+
+  .el-pagination.is-background .el-pager li {
+    background-color: $--color-info;
+  }
+
+  .el-pagination.is-background .btn-prev:not(:disabled), .el-pagination.is-background .btn-next:not(:disabled) {
+    background-color: $--color-info;
+  }
+
+  .el-pagination.is-background .btn-prev:disabled, .el-pagination.is-background .btn-next:disabled {
+    color: $--color-white;
+    background-color: $--color-text-placeholder;
+  }
+
+  .el-pagination__jump, .el-pagination__total {
+    color: $--color-text-regular;
+  }
+
+  .el-pagination__jump .el-input {
+    width: 50px;
+  }
+
+  /*tree*/
+  .el-tree {
+    background-color: $--background-color-base;
+  }
+
+  .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+    background-color: $--border-color-extra-light;
+  }
+
+  .el-tree .el-tree-node__content {
+    background-color: $--background-color-base;
+  }
+
+  /*dialog*/
+  .el-dialog {
+    background: $--background-color-show;
+    border: 2px solid;
+    border-image: -webkit-linear-gradient(left, #869bbb 0%, #fff 50%, #869bbb 100%) 30 30;
+  }
+
+  .el-dialog__title {
+    color: $--color-white
+  }
+
+  .el-dialog__header {
+    //border-bottom:1px solid #869bbb;
+  }
+
+  /*button*/
+  .el-button.is-plain {
+    background: $--background-color-base;
+    border-color: inherit;
+
+    &:hover, &:active, &:focus {
+      background: $--background-color-base;
+      color: inherit;
+    }
+  }
+
+  .el-button + .el-button {
+    margin-left: 10px;
+  }
+
+  /*upload*/
+  .el-upload-dragger {
+    background: $--background-color-base;
+    border-color: $--color-info;
+  }
+
+  .el-upload-dragger, .el-upload {
+    width: 100%;
+  }
+
+  /*loading*/
+  .el-loading-mask {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /*crumb*/
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner, .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover, .el-breadcrumb__item:last-child .el-breadcrumb__inner a, .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover {
+    font-weight: normal;
+    color: $--color-text-regular;
+    cursor: text;
+  }
+
+  .el-breadcrumb__inner.is-link {
+    color: $--color-text-regular;
+  }
+
+  .el-breadcrumb__inner.is-link:hover {
+    color: $--color-primary;
+  }
+
+  /*input*/
+  .el-input__inner, .el-textarea__inner {
+    background: $--background-color-base;
+    color: $--color-text-regular;
+    border-color: $--border-color-base;
+  }
+  .el-input-group__prepend{
+    padding:0;
+  }
+
+  /*select*/
+  .el-select-dropdown__item {
+    color: $--color-text-regular;
+  }
+
+  .el-select-dropdown__item.selected {
+    color: $--color-primary;
+  }
+
+  .el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
+    background-color: $--border-color-extra-light;
+  }
+
 }

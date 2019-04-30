@@ -3,9 +3,9 @@
     <el-select v-model="themeV" placeholder="请选择">
       <el-option
         v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
+        :key="item.key"
+        :label="item.name"
+        :value="item.key">
       </el-option>
     </el-select>
     <h2 class="pLabel mt20">标题</h2>
@@ -47,34 +47,24 @@
 </template>
 
 <script>
-  import {defaultTheme} from '@/assets/theme/setTheme.js';
+  import {themeList} from '@/assets/theme/setTheme.js';
   import {mapGetters} from 'vuex'
 
   export default {
     data() {
       return {
         themeV: '',
-        options: [{
-          value: 'default',
-          label: 'element主题'
-        }, {
-          value: 'bootstrap',
-          label: 'bootstrap主题'
-        }, {
-          value: 'dark',
-          label: '深色主题'
-        }]
+        options: themeList
       }
     },
     components: {},
     computed: {
       ...mapGetters([
-        'userId', 'theme'
+        'theme'
       ])
     },
     created() {
-      this.$bus.$emit('crumbList', [{title: '主题切换'}]);
-      this.themeV = this.theme ? this.theme : defaultTheme
+      this.themeV = this.theme;
     },
     watch: {
       themeV(d) {

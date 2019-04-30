@@ -12,43 +12,45 @@ export default new Router({
     },
     {
       path: '/',
+      name: 'menu',
       component: resolve => require(['../components/Home.vue'], resolve),
       meta: {title: '自述文件'},
       children: [
         {
           path: '/dashboard',
+          name: 'dashboard',
           component: resolve => require(['../views/Dashboard.vue'], resolve),
-          meta: {title: '系统首页'}
-        },
-        {
-          path: '/table',
-          component: resolve => require(['../views/BaseTable.vue'], resolve),
-          meta: {title: '基础表格'}
-        },
-        {
-          path: '/form',
-          component: resolve => require(['../views/BaseForm.vue'], resolve),
-          meta: {title: '基本表单'}
+          meta: {title: '使用指南'}
         },
         {
           path: '/theme',
+          name: 'theme',
           component: resolve => require(['../views/Theme.vue'], resolve),
           meta: {title: '主题切换'}
         },
         {
+          path: '/form',
+          name: 'form',
+          component: resolve => require(['../views/BaseForm.vue'], resolve),
+          meta: {title: '基本表单'}
+        },
+        {
+          path: '/table',
+          name: 'table',
+          component: resolve => require(['../views/BaseTable.vue'], resolve),
+          meta: {title: '基础表格'}
+        },
+        {
           path: '/tree',
+          name: 'tree',
           component: resolve => require(['../views/Tree.vue'], resolve),
           meta: {title: '懒加载树'}
         },
         {
-          path: '/404',
-          component: resolve => require(['../views/404.vue'], resolve),
-          meta: {title: '404'}
-        },
-        {
-          path: '/403',
-          component: resolve => require(['../views/403.vue'], resolve),
-          meta: {title: '403'}
+          path: '/crumb',
+          name: 'crumb',
+          component: resolve => require(['../views/Crumb.vue'], resolve),
+          meta: {title: '二级面包屑'}
         }
       ]
     },
@@ -58,7 +60,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/404'
+      redirect: '/'
     }
   ]
 })

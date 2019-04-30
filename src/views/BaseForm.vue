@@ -17,13 +17,6 @@
                             style="width: 100%;"></el-date-picker>
           </el-form-item>
         </el-col>
-        <el-col class="line tc" :span="2">-</el-col>
-        <el-col :span="11">
-          <el-form-item prop="date2">
-            <el-time-picker type="fixed-time" placeholder="选择时间" v-model="ruleForm.date2"
-                            style="width: 100%;"></el-time-picker>
-          </el-form-item>
-        </el-col>
       </el-form-item>
       <el-form-item label="即时配送" prop="delivery">
         <el-switch v-model="ruleForm.delivery"></el-switch>
@@ -96,7 +89,6 @@
     components: {},
     computed: {},
     created() {
-      this.$bus.$emit('crumbList', [{title: '基本表单'}]);
     },
     mounted() {
 

@@ -4,8 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 // 引入字体图标库
+import 'element-ui/lib/theme-chalk/icon.css';
 import './assets/iconfont/iconfont.css'
 import bus from 'vue-bus'
 import GLOBAL from './common/global.js'
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'development') {
 if (window.sessionStorage.getItem('userData')) {
   let data = JSON.parse(window.sessionStorage.getItem('userData'));
   store.commit('SET_INFO', {name: data.name, id: data.id})
-  store.commit('SET_THEME', data.theme)
+  store.dispatch('ChangeTheme', data.theme)
 }
 
 router.beforeEach(({meta, path}, from, next) => {

@@ -20,6 +20,5 @@
 </script>
 
 <style lang="scss">
-  //  由于base.scss不涉及主题颜色且会影响element组件的间距，所以单独加载
-  @import './assets/styles/base';
+  @import './assets/styles/main';
 </style>

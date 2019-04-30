@@ -16,7 +16,7 @@ $--color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1) !default;
 /* Color
 -------------------------- */
 /// color|[主题色,primary color,color primario]|BrandColor|0
-$--color-primary: #539FFF !default;
+$--color-primary: #3B91FF !default;
 /// color|[基础白色,basic white,basic white]|BackgroundColor|4
 $--color-white: #FFFFFF !default;
 /// color|[基础黑色,basic black,basic black]|BackgroundColor|4
@@ -37,7 +37,7 @@ $--color-warning: #E6A23C !default;
 /// color|[危险颜色,danger color,danger color]|SecondaryColor|1
 $--color-danger: #F56C6C !default;
 /// color|[信息颜色,info color,info color]|SecondaryColor|1
-$--color-info: #909399 !default;
+$--color-info: #324157 !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
 $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
@@ -55,7 +55,7 @@ $--color-text-regular: #606266 !default;
 /// color|[次要文字颜色,secondary text color,secondary text color]|FontColor|2
 $--color-text-secondary: #909399 !default;
 /// color|[占位文字颜色,placeholder text color,placeholder text color]|FontColor|2
-$--color-text-placeholder: #C0C4CC !default;
+$--color-text-placeholder: #C0CBDA !default;
 /// color|[一级边框颜色,border color,border color]|BorderColor|3
 $--border-color-base: #DCDFE6 !default;
 /// color|[二级边框颜色,border color light,border color light]|BorderColor|3
@@ -669,9 +669,9 @@ $--steps-padding: 20px !default;
 /* Menu
 --------------------------*/
 $--menu-item-font-size: $--font-size-base !default;
-$--menu-item-color: $--color-text-primary !default;
+$--menu-item-color: $--color-text-placeholder !default;
 $--menu-item-fill: $--color-white !default;
-$--menu-item-hover-fill: $--color-primary-light-9 !default;
+$--menu-item-hover-fill: #283446 !default;
 
 /* Rate
 --------------------------*/
@@ -795,5 +795,5 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @import "../../../../node_modules/element-ui/packages/theme-chalk/src/index";
 
 /* 自己的样式在此引用，必需*/
-@import '../../styles/main';
+//@import '../../styles/main';
 

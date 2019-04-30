@@ -41,7 +41,6 @@
       return {}
     },
     created() {
-      this.$bus.$emit('crumbList', [{title: '使用指南'}]);
     }
   }
 </script>

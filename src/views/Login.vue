@@ -18,7 +18,7 @@
         <div class="login-btn">
           <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
         </div>
-        <p class="login-tips">Tips : 用户名admin,密码随便填。</p>
+        <p class="login-tips">Tips :<br/> 用户名admin，密码随便填（浅灰）<br/> 用户名oyyl，密码随便填（深黑）</p>
       </el-form>
     </div>
   </div>
@@ -47,7 +47,6 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            console.log(JSON.stringify(this.ruleForm))
             this.$store.dispatch('GetUserInfo', this.ruleForm).then(() => {
               this.$message.closeAll();
               this.$router.push('/');

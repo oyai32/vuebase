@@ -1,8 +1,9 @@
 /*页面通用css*/
 body {
   font-size: 14px;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .content-box {
@@ -48,13 +49,13 @@ body {
 .filter-box {
   display: flex;
 }
+
 .pLabel {
-  margin-bottom: 10px ;
-  border-left: 3px solid $--color-primary;
+  margin-bottom: 10px;
   padding-left: 13px;
   font-size: 16px;
-  color: $--color-primary;
 }
+
 .pageTitle {
   font-size: 20px;
   font-weight: bold;
@@ -75,28 +76,6 @@ body {
   opacity: 0;
 }
 
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  background-color: rgba(2, 255, 250, 0);
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
-}
-
-/*定义滚动条轨道 内阴影+圆角*/
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(2, 255, 250, 0);
-  border-radius: 5px;
-  background-color: rgba(2, 255, 250, 0);
-}
-
-/*定义滑块 内阴影+圆角*/
-::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s;
 }
@@ -104,4 +83,20 @@ body {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
 {
   opacity: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .2s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
 }
