@@ -2,7 +2,7 @@
 body {
   @import './element-variables';
 
-  background: $--background-color-base;
+  background: #F5F7FA;
 
   .c-danger {
     color: $--color-danger
@@ -23,9 +23,6 @@ body {
     color: $--color-primary;
   }
 
-  .container {
-    height: calc(100% - 25px);
-  }
 
   .crumbs {
     background: #F5F7FA;

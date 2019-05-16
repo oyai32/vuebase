@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <v-head></v-head>
-    <v-sidebar></v-sidebar>
+    <the-header></the-header>
+    <the-sidebar></the-sidebar>
     <div class="content-box" :class="{'content-collapse':collapse}">
       <div class="crumbs">
         <el-breadcrumb separator="/">
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-  import vHead from './Header.vue';
-  import vSidebar from './Sidebar.vue';
+  import TheHeader from './TheHeader.vue';
+  import TheSidebar from './TheSidebar.vue';
 
   export default {
     data() {
@@ -33,7 +33,7 @@
       }
     },
     components: {
-      vHead, vSidebar
+      TheHeader, TheSidebar
     },
     created() {
       this.setCrumb(this.$route)

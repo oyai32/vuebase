@@ -1,54 +1,60 @@
 <template>
   <div class="container">
-    <div class="filter-box mb20">
-      <el-button type="primary" icon="delete" @click="delAll">批量删除</el-button>
+    <el-card class="box-card">
+      <div slot="header">
+        <span>基础表格</span>
+      </div>
+      <div class="filter-box mb20">
+        <el-button type="primary" icon="delete" @click="delAll">批量删除</el-button>
 
-      <el-select v-model="conditions.abnormal" placeholder="是否异常" class="ml10  mr10">
-        <el-option key="0" label="全部异常" value="0"></el-option>
-        <el-option key="1" label="是" value="1"></el-option>
-        <el-option key="2" label="否" value="2"></el-option>
-      </el-select>
-      <el-date-picker class="mr10" style="width:480px"
-                      v-model="conditions.time"
-                      value-format="yyyy-MM-dd"
-                      type="daterange"
-                      align="right"
-                      unlink-panels
-                      range-separator="至"
-                      start-placeholder="开始日期"
-                      end-placeholder="结束日期"
-                      :picker-options="pickerOptions2">
-      </el-date-picker>
-      <el-input v-model="conditions.text" placeholder="筛选关键词" class=" mr10"></el-input>
-      <el-button type="primary" icon="search" @click="search">搜索</el-button>
-    </div>
-    <el-table :data="tableData" ref="multipleTable"
-              @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center"></el-table-column>
-      <el-table-column prop="date" label="日期" sortable width="150">
-      </el-table-column>
-      <el-table-column prop="name" label="姓名" width="120">
-      </el-table-column>
-      <el-table-column prop="address" label="地址" :formatter="formatter">
-      </el-table-column>
-      <el-table-column label="操作" width="180" align="center">
-        <template slot-scope="scope">
-          <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"
-                     title="编辑"></el-button>
-          <el-button type="text" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)"
-                     title="询问删除"></el-button>
-          <el-button
-            size="mini"
-            type="danger"
-            @click.native.prevent="deleteRow(scope.$index,tableData)">直接删除
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="pagination mt20">
-      <el-pagination background @current-change="handleCurrentChange" layout="prev, pager, next" :total="1000">
-      </el-pagination>
-    </div>
+        <el-select v-model="conditions.abnormal" placeholder="是否异常" class="ml10  mr10">
+          <el-option key="0" label="全部异常" value="0"></el-option>
+          <el-option key="1" label="是" value="1"></el-option>
+          <el-option key="2" label="否" value="2"></el-option>
+        </el-select>
+        <el-date-picker class="mr10" style="width:480px"
+                        v-model="conditions.time"
+                        value-format="yyyy-MM-dd"
+                        type="daterange"
+                        align="right"
+                        unlink-panels
+                        range-separator="至"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期"
+                        :picker-options="pickerOptions2">
+        </el-date-picker>
+        <el-input v-model="conditions.text" placeholder="筛选关键词" class=" mr10"></el-input>
+        <el-button type="primary" icon="search" @click="search">搜索</el-button>
+      </div>
+      <el-table :data="tableData" ref="multipleTable"
+                @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55" align="center"></el-table-column>
+        <el-table-column prop="date" label="日期" sortable width="150">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" width="120">
+        </el-table-column>
+        <el-table-column prop="address" label="地址" :formatter="formatter">
+        </el-table-column>
+        <el-table-column label="操作" width="180" align="center">
+          <template slot-scope="scope">
+            <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"
+                       title="编辑"></el-button>
+            <el-button type="text" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)"
+                       title="询问删除"></el-button>
+            <el-button
+              size="mini"
+              type="danger"
+              @click.native.prevent="deleteRow(scope.$index,tableData)">直接删除
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="pagination mt20">
+        <el-pagination background @current-change="handleCurrentChange" layout="prev, pager, next" :total="1000">
+        </el-pagination>
+      </div>
+
+    </el-card>
     <!-- 编辑弹出框 -->
     <el-dialog title="编辑" :visible.sync="editVisible" width="30%">
       <el-form ref="form" :model="form" label-width="50px">
@@ -80,6 +86,7 @@
     </el-dialog>
 
   </div>
+
 </template>
 
 <script>

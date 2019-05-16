@@ -6,6 +6,12 @@ body {
   overflow: hidden;
 }
 
+.textPage {
+  li {
+    line-height: 28px;
+  }
+}
+
 .content-box {
   position: absolute;
   left: 250px;
@@ -29,9 +35,9 @@ body {
 
 .container {
   margin: 15px;
-  padding: 30px;
+  padding: 15px;
   border-radius: 2px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  //box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
   min-height: calc(100% - 100px);
 }
 
@@ -62,7 +68,6 @@ body {
   margin-bottom: 30px;
 }
 
-//---------------
 .curp:hover {
   @include hover();
 }

@@ -45,39 +45,44 @@
         routeMap: {},
         activeIndex: '',
         items: [{
-          icon: 'el-icon-news',
-          name: 'dashboard',
-          title: '使用指南'
+          icon: 'icon-home',
+          name: 'dashboard'
+        }, {
+          icon: 'icon-cuowubaogao',
+          title: '开发规范',
+          subs: [
+            {
+              name: 'normStructure'
+            },
+            {
+              name: 'normName'
+            }
+          ]
         },
           {
-            icon: 'el-icon-date',
-            name: 'theme',
-            title: '主题切换'
+            icon: 'icon-jingzi',
+            name: 'theme'
           },
           {
-            icon: 'el-icon-setting',
+            icon: 'icon-project',
             name: 'one',
             title: '一级菜单',
             subs: [
               {
-                name: 'form',
-                title: '基本表单'
+                name: 'form'
               },
               {
-                name: 'table',
-                title: '基础表格'
+                name: 'table'
               },
               {
                 name: 'two',
                 title: '二级菜单',
                 subs: [
                   {
-                    name: 'tree',
-                    title: '懒加载树'
+                    name: 'tree'
                   },
                   {
-                    name: 'crumb',
-                    title: '二级面包屑'
+                    name: 'crumb'
                   }
                 ]
               }

@@ -1,34 +1,38 @@
 <template>
   <div class="container">
-    <el-row :gutter="20">
-      <el-col :span="10">
-        <h2 class="pLabel">一次性加载的树</h2>
-        <el-input
-          placeholder="输入关键字进行过滤"
-          v-model="filterText">
-        </el-input>
+    <el-card class="box-card">
+      <div slot="header">
+        <span>树</span>
+      </div>
+      <el-row :gutter="20">
+        <el-col :span="10">
+          <h2 class="pLabel">一次性加载的树</h2>
+          <el-input
+            placeholder="输入关键字进行过滤"
+            v-model="filterText">
+          </el-input>
 
-        <el-tree
-          class="filter-tree"
-          :data="data2"
-          :props="defaultProps"
-          default-expand-all
-          :filter-node-method="filterNode"
-          ref="tree2">
-        </el-tree>
+          <el-tree
+            class="filter-tree"
+            :data="data2"
+            :props="defaultProps"
+            default-expand-all
+            :filter-node-method="filterNode"
+            ref="tree2">
+          </el-tree>
 
-      </el-col>
-      <el-col :span="10" :offset="4">
-        <h2 class="pLabel">懒加载的树</h2>
-        <el-tree
-          :props="treeProps"
-          :load="loadNode1"
-          lazy
-          show-checkbox>
-        </el-tree>
-      </el-col>
-    </el-row>
-
+        </el-col>
+        <el-col :span="10" :offset="4">
+          <h2 class="pLabel">懒加载的树</h2>
+          <el-tree
+            :props="treeProps"
+            :load="loadNode1"
+            lazy
+            show-checkbox>
+          </el-tree>
+        </el-col>
+      </el-row>
+    </el-card>
   </div>
 </template>
 

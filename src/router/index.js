@@ -13,14 +13,25 @@ export default new Router({
     {
       path: '/',
       name: 'menu',
-      component: resolve => require(['../components/Home.vue'], resolve),
-      meta: {title: '自述文件'},
+      component: resolve => require(['../components/TheHome.vue'], resolve),
       children: [
+        {
+          path: '/normname',
+          name: 'normName',
+          component: resolve => require(['../views/norm/NormName.vue'], resolve),
+          meta: {title: '命名规范'}
+        },
+        {
+          path: '/normstructure',
+          name: 'normStructure',
+          component: resolve => require(['../views/norm/NormStructure.vue'], resolve),
+          meta: {title: '目录结构'}
+        },
         {
           path: '/dashboard',
           name: 'dashboard',
           component: resolve => require(['../views/Dashboard.vue'], resolve),
-          meta: {title: '使用指南'}
+          meta: {title: '首页'}
         },
         {
           path: '/theme',
