@@ -1,8 +1,8 @@
 {
   "name": "resources",
   "version": "1.0.0",
-  "description": "资源认证管理平台",
-  "author": "tacy <ouyangyulin@mininglamp.com>",
+  "description": "后台管理系统",
+  "author": "tacy <oyai32@126.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -67,7 +67,7 @@
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": ">=3.1.11",
+    "webpack-dev-server": "^2.9.7",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

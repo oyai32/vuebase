@@ -6,6 +6,9 @@
 >基于vue全家桶，element-ui
 >提供开发规范及文件目录说明
 >可自动配置多开发/部署环境
+
+![image](https://github.com/oyai32/vuebase/blob/master/src/assets/img/dir.png)
+
 #### 重点实现的功能：
 >登录拦截 、主题切换 、全局面包屑、打包/开发环境自动化配置
 
@@ -42,14 +45,14 @@ assets/theme下的文件为主题\
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:9091 （开发环境地址）
 npm run dev
 
-# build for production with minification
+# 打包正式环境，使用的正式环境地址
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# 打包测试环境，使用的测试环境地址，地址在global.js中配置
+npm run build -- test
 ```
 ## 登陆
 >账号：admin 密码随意 ，皮肤为默认皮肤\

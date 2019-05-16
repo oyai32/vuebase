@@ -5,14 +5,11 @@
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="0px" class="ms-content">
         <el-form-item prop="username">
           <el-input v-model="ruleForm.username" placeholder="用户名">
-
-            <el-button slot="prepend"><i class="el-icon-user"></i></el-button>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input type="password" placeholder="密码" v-model="ruleForm.password"
                     @keyup.enter.native="submitForm('ruleForm')">
-            <el-button slot="prepend"><i class="el-icon-lock"></i></el-button>
           </el-input>
         </el-form-item>
         <div class="login-btn">
