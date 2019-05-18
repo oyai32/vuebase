@@ -14,7 +14,6 @@
     <ol class="pl30">
       <li>views 下面的 vue 文件代表着页面的名字</li>
       <li>放在模块文件夹之下</li>
-      <li>只有一个文件的情况下不会出现文件夹，而是直接放在 views 目录下面，如 Login Home</li>
       <li>尽量是名词</li>
       <li>大写开头，开头的单词就是所属模块名字（CarDetail、CarEdit、CarList）</li>
       <li>名字至少两个单词（good: CarDetail）（bad: Car）</li>

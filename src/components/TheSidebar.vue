@@ -44,11 +44,13 @@
         // key为路由的name，value为路由的路径和title
         routeMap: {},
         activeIndex: '',
+        // 定义菜单的结构，每个对象都需要有name
         items: [{
           icon: 'icon-home',
           name: 'dashboard'
         }, {
           icon: 'icon-cuowubaogao',
+          name: 'norm',
           title: '开发规范',
           subs: [
             {
@@ -96,14 +98,14 @@
       this.$bus.$on('collapse', msg => {
         this.collapse = msg;
       })
-      let pageList = this.$router.options.routes.filter(cur => cur.name === 'menu');
+      let pageList = this.getAllRoutes(this.$router.options.routes);
       let routeMap = {};
-      for (let item of pageList[0].children) {
+      for (let item of pageList) {
         if (item.name) {
           routeMap[item.name] = {path: item.path, title: item.meta.title}
         }
       }
-      this.routeMap = routeMap;
+      this.routeMap = routeMap
     },
     computed: {
       ...mapGetters([
@@ -113,7 +115,6 @@
     watch: {},
     methods: {
       getTitle(item) {
-        console.log(JSON.stringify(item))
         if (item.subs && item.subs.length > 0) return item.title
         else return this.routeMap[item.name] && this.routeMap[item.name].title
       },
@@ -121,6 +122,18 @@
       selectFn(index, indexPath) {
         this.$router.push({name: index})
         this.activeIndex = index
+      },
+      // 递归查所有既有name又有path的路由
+      getAllRoutes(list) {
+        let allRoutes = []
+        for (let item of list) {
+          if (item.children) {
+            allRoutes.push(...this.getAllRoutes(item.children))
+          } else if (item.path && item.name) {
+            allRoutes.push(item);
+          }
+        }
+        return allRoutes;
       }
     }
   }
