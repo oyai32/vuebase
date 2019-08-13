@@ -160,6 +160,49 @@ body.dark {
     background-color: $--background-color-show;
   }
 
+  .el-picker-panel__footer {
+    background-color: $--background-color-show;
+  }
+
+  .el-date-range-picker__content, .el-date-range-picker__time-header, .el-picker-panel__footer, .el-picker-panel__sidebar {
+    border-color: $--border-color-base;
+  }
+
+  .el-time-panel {
+    background-color: $--background-color-show;
+  }
+
+  .el-time-spinner__item:hover:not(.disabled):not(.active) {
+    background-color: $--color-primary;
+  }
+
+  .el-time-panel__btn.confirm {
+    color: $--color-primary;
+  }
+
+  .el-time-spinner__item {
+    color: $--color-text-regular;
+  }
+
+  .el-time-spinner__item.active:not(.disabled) {
+    color: $--color-primary;
+  }
+
+  .el-time-panel__content::after, .el-time-panel__content::before, .el-time-panel__footer {
+    border-color: $--border-color-base;
+  }
+
+  .el-picker-panel__icon-btn, .el-picker-panel__shortcut {
+    color: $--color-text-regular;
+  }
+
+  .el-button.is-disabled.is-plain, body.dark .el-button.is-disabled.is-plain:hover, body.dark .el-button.is-disabled.is-plain:focus {
+    background-color: $--border-color-base;
+  }
+
+  .el-picker-panel__shortcut:hover {
+    color: $--color-primary;
+  }
 
   /*Checkbox,radio*/
   .el-range-input, .el-checkbox__inner, .el-radio__inner {

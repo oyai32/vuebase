@@ -10,12 +10,17 @@ import './assets/iconfont/iconfont.css'
 import bus from 'vue-bus'
 import GLOBAL from './common/global.js'
 import store from './store/store.js'
+import * as Utils from './common/utils.js'
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 
 Vue.use(ElementUI)
 Vue.use(bus)
 
 // 挂载到Vue实例上面
 Vue.prototype.GLOBAL = GLOBAL
+Vue.prototype.Utils = Utils
+Vue.prototype.$moment = moment
 
 if (process.env.NODE_ENV === 'development') {
   require('./api/mock');

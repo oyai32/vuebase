@@ -52,6 +52,12 @@ export default new Router({
           meta: {title: '基础表格'}
         },
         {
+          path: '/time',
+          name: 'time',
+          component: resolve => require(['../views/BaseTime.vue'], resolve),
+          meta: {title: '时间范围插件'}
+        },
+        {
           path: '/tree',
           name: 'tree',
           component: resolve => require(['../views/Tree.vue'], resolve),
@@ -71,7 +77,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/'
+      component: resolve => require(['../views/404.vue'], resolve)
     }
   ]
 })

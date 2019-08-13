@@ -37,7 +37,8 @@
       │ │ ├── <span>TheHeader.vue</span>   头部组件
       │ │ ├── <span>TheHome.vue</span>   布局
       │ │ ├── <span>TheSidebar.vue</span>   菜单导航组件
-      │ │ └── <span>TheTags.vue</span>   标签栏组件（一般不使用）
+      │ │ ├── <span>TheTags.vue</span>   标签栏组件（一般不使用）
+      │ │ └── <span>VPickerRange.vue</span>   时间范围插件
       │ ├── <span class="folder">router   路由文件夹</span>
       │ │ └── <span>index.js</span>   路由配置
       │ ├── <span class="folder">store   vuex的管理</span>
