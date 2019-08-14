@@ -11,7 +11,7 @@
       </div>
       <div class="content">
         <transition name="fade-transform" mode="out-in">
-          <keep-alive :include="tagsList">
+          <keep-alive :include="keepAlive">
             <router-view></router-view>
           </keep-alive>
         </transition>
@@ -27,9 +27,9 @@
   export default {
     data() {
       return {
-        tagsList: [],
         collapse: false,
-        crumbList: ''
+        crumbList: '',
+        keepAlive: []
       }
     },
     components: {
@@ -44,9 +44,18 @@
     watch: {
       // 监听路由的跳转
       '$route'(to, from) {
+        // 不是登录页则设置缓存（theSidebar里写了每次切换菜单时会把缓存清掉）
+        if (to.name !== 'Login') {
+          this.$store.dispatch('changeKeepAlive', to.name);
+        } else {
+          // 如果跳登陆页页清空
+          this.$store.dispatch('clearKeepAlive');
+        }
+        this.keepAlive = this.$store.state.app.keepAlive
         this.setCrumb(to)
       }
     },
+    computed: {},
     methods: {
       setCrumb(to) {
         let title = to.meta.title;

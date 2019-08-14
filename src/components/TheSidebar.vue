@@ -124,7 +124,9 @@
       // 选中菜单的方法
       selectFn(index, indexPath) {
         this.$router.push({name: index})
-        this.activeIndex = index
+        this.activeIndex = index;
+        // 如果是点击的菜单，把keepAlive的缓存清掉，使得从菜单点进去的页面都是没有缓存的
+        this.$store.dispatch('clearKeepAlive')
       },
       // 递归查所有既有name又有path的路由
       getAllRoutes(list) {

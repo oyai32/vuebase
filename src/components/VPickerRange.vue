@@ -97,7 +97,6 @@
       initData() {
         // 由于el-date-picker的formatter和moment的formatter不一样，所以要做处理
         let formatter = this.formatter.replace('yyyy', 'YYYY').replace('dd', 'DD');
-        console.log(formatter)
         this.momentFormatter = formatter;
         if (this.startTime && this.endTime) {
           this.time = [this.startTime, this.endTime];
@@ -126,7 +125,6 @@
       },
       initTimeRange() {
         const that = this;
-        console.log(that.$moment())
         let pickerOptions = {
           // 禁选今日之后的日期
           disabledDate(time) {
