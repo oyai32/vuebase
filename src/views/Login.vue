@@ -40,6 +40,10 @@
         }
       }
     },
+    created() {
+      // 直接访问的登陆页要执行logout相关操作
+      this.$store.dispatch('Logout')
+    },
     methods: {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
