@@ -4,13 +4,14 @@
     v-model="time"
     :value-format="formatter"
     :type="type"
-    :align="algin"
-    :unlink-panels="unlinkPanels"
+    align="right"
+    unlink-panels
     range-separator="至"
     start-placeholder="开始日期"
     end-placeholder="结束日期"
     :picker-options="pickerOptions"
     :default-time="defaultTime"
+    @change="changeCallBack"
   >
   </el-date-picker>
 </template>
@@ -29,21 +30,6 @@
       endTime: {
         type: String,
         default: ''
-      },
-      // 对齐方式 left / center / right
-      algin: {
-        type: String,
-        default: 'left'
-      },
-      // false时选择日期不会有确定按钮
-      unlinkPanels: {
-        type: Boolean,
-        default: false
-      },
-      // 显示快捷按钮
-      isShowQuick: {
-        type: Boolean,
-        default: true
       },
       // 默认只日期
       type: {
@@ -76,6 +62,13 @@
         type: Function,
         default: function () {
           // 需要return值，参考dealDisabledRule
+        }
+      },
+      // 改变时间后的回调方法
+      changeCallBack: {
+        type: Function,
+        default: function () {
+
         }
       }
     },
@@ -116,6 +109,14 @@
               startTime = this.$moment().add(1, 'days').format('YYYY-MM-DD 00:00:00');
               endTime = this.$moment().add(1, 'days').format('YYYY-MM-DD 23:59:59');
               break;
+            case 'lastWeek': // 上个7天
+              startTime = this.$moment().subtract(7, 'days').format('YYYY-MM-DD 00:00:00');
+              endTime = this.$moment().format('YYYY-MM-DD 23:59:59');
+              break;
+            case 'nextWeek': // 下个7天
+              startTime = this.$moment().format('YYYY-MM-DD 00:00:00');
+              endTime = this.$moment().add(7, 'days').format('YYYY-MM-DD 23:59:59');
+              break;
           }
           if (startTime && endTime) {
             // 为了让格式通用，所以处理格式时用最细单位，再format为需要格式
@@ -125,14 +126,12 @@
       },
       initTimeRange() {
         const that = this;
-        let pickerOptions = {
+        this.pickerOptions = {
           // 禁选今日之后的日期
           disabledDate(time) {
             return that.dealDisabledRule(time)
-          }
-        }
-        if (this.isShowQuick) {
-          pickerOptions['shortcuts'] = [{
+          },
+          shortcuts: [{
             text: '最近7天',
             onClick(picker) {
               that.recentlyDay(picker, 7)
@@ -174,7 +173,6 @@
             }
           }]
         }
-        this.pickerOptions = pickerOptions;
       },
       // 最近几天
       recentlyDay(picker, day) {

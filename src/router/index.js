@@ -52,9 +52,9 @@ export default new Router({
           meta: {title: '基础表格'}
         },
         {
-          path: '/time',
-          name: 'time',
-          component: resolve => require(['../views/BaseTime.vue'], resolve),
+          path: '/plugintime',
+          name: 'pluginTime',
+          component: resolve => require(['../views/plugin/PluginTime.vue'], resolve),
           meta: {title: '时间范围插件'}
         },
         {

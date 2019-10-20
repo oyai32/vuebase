@@ -58,9 +58,15 @@ export const showMsg = (text, type = 'success') => {
  * 将时间数组割成开始时间和结束时间
  */
 export const dealTimeArr = (time, startName = 'startTime', endName = 'endTime') => {
+  if (time) {
+    return {
+      [startName]: time[0],
+      [endName]: time[1]
+    }
+  }
   return {
-    [startName]: time[0],
-    [endName]: time[1]
+    [startName]: null,
+    [endName]: null
   }
 }
 

@@ -66,6 +66,16 @@
             name: 'theme'
           },
           {
+            icon: 'icon-ui',
+            name: 'plugin',
+            title: '插件',
+            subs: [
+              {
+                name: 'pluginTime'
+              }
+            ]
+          },
+          {
             icon: 'icon-project',
             name: 'one',
             title: '一级菜单',
@@ -75,9 +85,6 @@
               },
               {
                 name: 'table'
-              },
-              {
-                name: 'time'
               },
               {
                 name: 'two',
