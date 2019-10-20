@@ -44,13 +44,8 @@
     watch: {
       // 监听路由的跳转
       '$route'(to, from) {
-        // 不是登录页则设置缓存（theSidebar里写了每次切换菜单时会把缓存清掉）
-        if (to.name !== 'Login') {
-          this.$store.dispatch('changeKeepAlive', to.name);
-        } else {
-          // 如果跳登陆页页清空
-          this.$store.dispatch('clearKeepAlive');
-        }
+        // 缓存页面（theSidebar里写了每次切换菜单时会把缓存清掉,由于存在vuex里，所以刷新页面也会清空）
+        this.$store.dispatch('changeKeepAlive', to.name);
         this.keepAlive = this.$store.state.app.keepAlive
         this.setCrumb(to)
       }
