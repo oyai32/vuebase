@@ -29,8 +29,7 @@ if (process.env.NODE_ENV === 'development') {
 // 页面刷新时，重新赋值
 if (window.sessionStorage.getItem('userData')) {
   let data = JSON.parse(window.sessionStorage.getItem('userData'));
-  store.commit('SET_INFO', {name: data.name, id: data.id})
-  store.dispatch('ChangeTheme', data.theme)
+  store.dispatch('user/SetUserData', data)
 }
 
 router.beforeEach(({meta, path}, from, next) => {

@@ -2,56 +2,49 @@ import {getUserInfo} from '@/api/login'
 import {setTheme, defaultTheme} from '@/assets/theme/setTheme.js'
 
 const user = {
+  namespaced: true,
+  strict: true, // 严格模式
   state: {
-    info: '',
-    theme: defaultTheme
+    info: {}
   },
   mutations: {
-    SET_INFO: (state, info) => {
-      state.info = info
-    },
-    SET_THEME: (state, theme) => {
-      state.theme = theme
+    // 更新state数据
+    setStateAttr(state, param = {}) {
+      for (let key in param) {
+        state[key] = param[key];
+      }
     }
   },
-
   actions: {
     // 获取用户信息
-    GetUserInfo({commit, state}, loginForm) {
-      return new Promise((resolve, reject) => {
-        getUserInfo(loginForm).then(res => {
-          if (res.state === 'success') {
-            // 将用户信息存入store
-            commit('SET_INFO', {name: res.name, id: res.id})
-            if (res.theme) {
-              this.dispatch('ChangeTheme', res.theme)
-            } else {
-              this.dispatch('ChangeTheme', defaultTheme)
-            }
-            // 将用户信息存到本地缓存
-            sessionStorage.setItem('userData', JSON.stringify(res));
-            resolve()
-          } else {
-            reject(res.message)
-          }
-        }).catch(error => {
-          reject(error)
-        })
-      });
+    GetUserInfo({commit, state, dispatch}, loginForm) {
+      return getUserInfo(loginForm).then(res => {
+        if (res.state === 'success') {
+          // 存用户数据
+          dispatch('SetUserData', {name: res.name, id: res.id, theme: res.theme || defaultTheme})
+        }
+        return res
+      })
+    },
+    // 设置用户数据
+    SetUserData({commit, dispatch}, info) {
+      commit('setStateAttr', {info})
+      // 将用户信息存到本地缓存
+      sessionStorage.setItem('userData', JSON.stringify(info));
+      // 设置主题
+      setTheme(info.theme);
     },
     // 登出
-    Logout({commit, state}) {
-      commit('SET_INFO', '')
+    Logout({commit}) {
+      commit('setStateAttr', {info: {}})
       sessionStorage.removeItem('userData')
     },
     // 改变用户主题
-    ChangeTheme({commit, state}, theme) {
-      commit('SET_THEME', theme)
-      setTheme(theme);
-      // 将用户改变的主题数据，存到缓存的userData里
-      let userData = JSON.parse(sessionStorage.getItem('userData'));
-      sessionStorage.setItem('userData', JSON.stringify({...userData, theme: theme}));
-      // 存到数据库（不方便mock所以省略）
+    ChangeTheme({dispatch, state}, theme) {
+      const {info} = state;
+      info.theme = theme;
+      dispatch('SetUserData', info);
+      // 再将该用户选的主题存到数据库（不方便mock所以省略）
     }
   }
 }

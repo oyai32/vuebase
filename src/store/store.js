@@ -13,6 +13,6 @@ export default new Vuex.Store({
   getters: {
     name: state => state.user.info.name,
     userId: state => state.user.info.id,
-    theme: state => state.user.theme
+    theme: state => state.user.info.theme
   }
 })

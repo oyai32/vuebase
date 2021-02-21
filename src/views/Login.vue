@@ -42,22 +42,23 @@
     },
     created() {
       // 直接访问的登陆页要执行logout相关操作
-      this.$store.dispatch('Logout')
+      this.$store.dispatch('user/Logout')
     },
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        this.$refs[formName].validate(async (valid) => {
           if (valid) {
-            this.$store.dispatch('GetUserInfo', this.ruleForm).then(() => {
-              this.$message.closeAll();
-              this.$router.push('/');
-            }).catch((msg) => {
-              this.$message({
-                showClose: true,
-                type: 'error',
-                message: msg
-              });
-            });
+            try {
+              const res = await this.$store.dispatch('user/GetUserInfo', this.ruleForm)
+              if (res.state === 'success') {
+                this.$message.closeAll();
+                this.$router.push('/');
+              } else {
+                this.Utils.showMsg(res.message, 'error')
+              }
+            } catch (e) {
+              this.Utils.showMsg('登录失败！', 'error')
+            }
           } else {
             return false;
           }

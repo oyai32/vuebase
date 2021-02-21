@@ -76,7 +76,7 @@
     },
     methods: {
       changeTheme(d) {
-        this.$store.dispatch('ChangeTheme', d)
+        this.$store.dispatch('user/ChangeTheme', d)
       }
     }
   }

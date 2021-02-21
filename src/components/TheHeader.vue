@@ -45,7 +45,7 @@
         this.$bus.$emit('collapse', this.collapse);
       },
       logout() {
-        this.$store.dispatch('Logout');
+        this.$store.dispatch('user/Logout');
         this.$router.push('/login');
       }
     },
