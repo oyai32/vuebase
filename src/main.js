@@ -26,12 +26,6 @@ if (process.env.NODE_ENV === 'development') {
   require('./api/mock');
 }
 
-// 页面刷新时，重新赋值
-if (window.sessionStorage.getItem('userData')) {
-  let data = JSON.parse(window.sessionStorage.getItem('userData'));
-  store.dispatch('user/SetUserData', data)
-}
-
 router.beforeEach(({meta, path}, from, next) => {
   var {auth = true} = meta
   // true用户已登录， false用户未登录

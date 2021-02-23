@@ -29,15 +29,12 @@ const user = {
     // 设置用户数据
     SetUserData({commit, dispatch}, info) {
       commit('setStateAttr', {info})
-      // 将用户信息存到本地缓存
-      sessionStorage.setItem('userData', JSON.stringify(info));
       // 设置主题
       setTheme(info.theme);
     },
     // 登出
     Logout({commit}) {
       commit('setStateAttr', {info: {}})
-      sessionStorage.removeItem('userData')
     },
     // 改变用户主题
     ChangeTheme({dispatch, state}, theme) {
