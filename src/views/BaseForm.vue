@@ -48,6 +48,7 @@
 
 <script>
   export default {
+    name: 'BaseForm',
     data() {
       return {
         ruleForm: {

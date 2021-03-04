@@ -35,7 +35,7 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapState} from 'vuex'
 
   export default {
     data() {
@@ -81,10 +81,10 @@
             title: '一级菜单',
             subs: [
               {
-                name: 'form'
+                name: 'baseForm'
               },
               {
-                name: 'table'
+                name: 'baseTable'
               },
               {
                 name: 'two',
@@ -120,7 +120,8 @@
     computed: {
       ...mapGetters([
         'userId', 'theme'
-      ])
+      ]),
+      ...mapState('common', ['crumbList'])
     },
     watch: {},
     methods: {
@@ -128,12 +129,23 @@
         if (item.subs && item.subs.length > 0) return item.title
         else return this.routeMap[item.name] && this.routeMap[item.name].title
       },
-      // 选中菜单的方法
-      selectFn(index, indexPath) {
-        this.$router.push({name: index})
-        this.activeIndex = index;
-        // 如果是点击的菜单，把keepAlive的缓存清掉，使得从菜单点进去的页面都是没有缓存的
-        this.$store.dispatch('clearKeepAlive')
+      // 选中菜单的方法（点击菜单进入，需刷新页面）
+      selectFn(name) {
+        let crumb = this.crumbList.find(route => route.name === name)
+        // 若该菜单已作为非一级页面打开，则需要重置面包屑
+        if (crumb) {
+          this.$store.commit('common/SET_CURMB_LIST', [crumb])
+        }
+        // 此处需要拿到vue文件的name，当前vue页面的name与route的name只是首字母大学的差异
+        let vueName = name.charAt(0).toUpperCase() + name.slice(1)
+        this.$store.dispatch('common/removeKeepAlive', vueName)
+        // 由于调reload方法无法清空input的值
+        // 所以，此处变换一下路由的值，使得下方的$router.push({name})可以识别到路由变化后重新渲染
+        this.$router.push('/')
+        this.$nextTick(() => {
+          this.$router.push({name})
+          this.activeIndex = name
+        })
       },
       // 递归查所有既有name又有path的路由
       getAllRoutes(list) {

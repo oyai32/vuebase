@@ -13,7 +13,9 @@ import store from './store/store.js'
 import * as Utils from './common/utils.js'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
+import keepAliveMixin from './mixins/keepAliveMixin.js'
 
+Vue.mixin(keepAliveMixin)
 Vue.use(ElementUI)
 Vue.use(bus)
 
@@ -26,16 +28,27 @@ if (process.env.NODE_ENV === 'development') {
   require('./api/mock');
 }
 
-router.beforeEach(({meta, path}, from, next) => {
-  var {auth = true} = meta
-  // true用户已登录， false用户未登录
+router.beforeEach((to, from, next) => {
+  // 用户是否登录标记
   var isLogin = Boolean(store.state.user.info)
-  if (auth && !isLogin && path !== '/login') {
+  if (!isLogin && to.path !== '/login') {
     return next({path: '/login'})
   }
+
+  // 若需访问的页面的参数是{}，可能是点击面包屑返回的，从面包屑中取到原来的参数
+  let paramsStr = JSON.stringify(to.params)
+  if (paramsStr === '{}') {
+    const crumb = store.state.common.crumbList.find(item => item.name === to.name)
+    // 是面包屑的上的页面，且有参，则带上原来的参
+    if (crumb && Object.keys(crumb.params).length > 0) {
+      return next({name: crumb.name, params: crumb.params})
+    }
+  }
+
+  // 设置面包屑的数据
+  store.dispatch('common/setCrumb', to)
   next()
 })
-
 Vue.config.productionTip = false
 
 let vm = new Vue({

@@ -93,6 +93,7 @@
   import * as Api from '@/api/api'
 
   export default {
+    name: 'BaseTable',
     data() {
       return {
         tableData: [],
