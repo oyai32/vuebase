@@ -94,7 +94,7 @@
                     name: 'tree'
                   },
                   {
-                    name: 'crumb'
+                    name: 'jumpOne'
                   }
                 ]
               }

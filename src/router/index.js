@@ -64,10 +64,22 @@ export default new Router({
           meta: {title: '懒加载树'}
         },
         {
-          path: '/crumb',
-          name: 'crumb',
-          component: resolve => require(['../views/Crumb.vue'], resolve),
-          meta: {title: '二级面包屑'}
+          path: '/jumpone',
+          name: 'jumpOne',
+          component: resolve => require(['../views/jump/JumpOne.vue'], resolve),
+          meta: {title: '多层跳转'}
+        },
+        {
+          path: '/jumptwo',
+          name: 'jumpTwo',
+          component: resolve => require(['../views/jump/JumpTwo.vue'], resolve),
+          meta: {title: '二级页面', type: 'sub'}
+        },
+        {
+          path: '/jumpthree',
+          name: 'jumpThree',
+          component: resolve => require(['../views/jump/JumpThree.vue'], resolve),
+          meta: {title: '三级页面', type: 'sub'}
         }
       ]
     },
