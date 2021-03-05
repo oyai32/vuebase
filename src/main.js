@@ -35,10 +35,18 @@ router.beforeEach((to, from, next) => {
     return next({path: '/login'})
   }
 
+  const {crumbList} = store.state.common;
+  // 若新打开的是一个非菜单页面，且面包屑里没值，则回到首页
+  // 场景：（二级页面地址用新窗口打开，跳转首页）
+  // 非新窗口，跳转非菜单页，仍会因缺参而报错
+  if (to.meta.type === 'sub' && crumbList.length === 0) {
+    return next({path: '/'})
+  }
+
   // 若需访问的页面的参数是{}，可能是点击面包屑返回的，从面包屑中取到原来的参数
   let paramsStr = JSON.stringify(to.params)
   if (paramsStr === '{}') {
-    const crumb = store.state.common.crumbList.find(item => item.name === to.name)
+    const crumb = crumbList.find(item => item.name === to.name)
     // 是面包屑的上的页面，且有参，则带上原来的参
     if (crumb && Object.keys(crumb.params).length > 0) {
       return next({name: crumb.name, params: crumb.params})

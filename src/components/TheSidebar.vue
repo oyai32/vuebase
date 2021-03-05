@@ -103,7 +103,6 @@
       }
     },
     created() {
-      this.activeIndex = this.$route.name
       // 通过 Event Bus 进行组件间通信，来折叠侧边栏
       this.$bus.$on('collapse', msg => {
         this.collapse = msg;
@@ -121,9 +120,16 @@
       ...mapGetters([
         'userId', 'theme'
       ]),
-      ...mapState('common', ['crumbList'])
+      ...mapState('common', ['crumbList', 'activePage'])
     },
-    watch: {},
+    watch: {
+      activePage: {
+        handler(page) {
+          this.activeIndex = page || this.items[0].name
+        },
+        immediate: true
+      }
+    },
     methods: {
       getTitle(item) {
         if (item.subs && item.subs.length > 0) return item.title

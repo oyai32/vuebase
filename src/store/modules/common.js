@@ -5,7 +5,8 @@ const common = {
     keepAliveMax: 10,
     keepAlivePages: [], // 需缓存的页面的vueName
     keepAliveParams: {}, // 当前keepAlive对应的页面的参数
-    crumbList: []
+    crumbList: [],
+    activePage: ''// 默认选中的页面
   },
   mutations: {
     ADD_KEEP_ALIVE_PAGES: (state, {vueName, paramStr}) => {
@@ -22,6 +23,8 @@ const common = {
     },
     SET_CURMB_LIST: (state, data) => {
       state.crumbList = data
+      state.activePage = data[0].name
+      window.sessionStorage.setItem('crumbList', JSON.stringify(data))
     },
     SET_RELOAD_FLAG(state, data) {
       state.reloadFlag = data
