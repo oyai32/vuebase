@@ -46,9 +46,9 @@ export default new Router({
           meta: {title: '基本表单', type: 'sub'} // type为sub表示是非菜单页面，可理解为某页面的详情页
         },
         {
-          path: '/table',
+          path: '/basetable',
           name: 'baseTable',
-          component: resolve => require(['../views/BaseTable.vue'], resolve),
+          component: resolve => require(['../views/table/BaseTable.vue'], resolve),
           meta: {title: '基础表格'}
         },
         {
