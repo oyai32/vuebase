@@ -87,6 +87,9 @@
                 name: 'baseTable'
               },
               {
+                name: 'jsxTable'
+              },
+              {
                 name: 'two',
                 title: '二级菜单',
                 subs: [

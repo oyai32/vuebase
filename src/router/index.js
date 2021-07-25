@@ -52,6 +52,12 @@ export default new Router({
           meta: {title: '基础表格'}
         },
         {
+          path: '/jsxtable',
+          name: 'jsxTable',
+          component: resolve => require(['../views/table/JsxTable.vue'], resolve),
+          meta: {title: 'jsx可复用表格'}
+        },
+        {
           path: '/plugintime',
           name: 'pluginTime',
           component: resolve => require(['../views/plugin/PluginTime.vue'], resolve),
